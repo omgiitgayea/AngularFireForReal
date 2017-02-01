@@ -7,8 +7,11 @@
     </form>
 </div>
 <ul>
-    <li ng-repeat="name in vm.names">{{name.$id}}</li>
+    <li ng-repeat="name in vm.names" ng-click="vm.setList(name)">{{name.name}} {{name.items}} <span ng-click="vm.delName(name)">X</span></li>
 </ul>
+<div>
+    Current List: {{vm.currName.name}}
+</div>
 <div>
     <form ng-submit="vm.addItem()">
         <label>
@@ -17,3 +20,6 @@
         </label>
     </form>
 </div>
+<ul ng-if="vm.currName.items != 'empty'">
+    <li ng-repeat="item in vm.currName.items">{{item}} <span ng-click="vm.delItem(item)">X</span></li>
+</ul>
